@@ -1,0 +1,44 @@
+{
+  "name": "reservation-service",
+  "version": "0.0.1",
+  "description": "A simple reservation service for booking hotel rooms. Take home interview assignment made using Node and GraphQL.",
+  "main": "src/index.js",
+  "repository": "https://github.com/stone1549/reservation-service.git",
+  "author": "Justin Stone",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "flow": "flow",
+    "flow:check": "flow check ./src/",
+    "start": "nodemon --exec babel-node src/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "flow-bin": "^0.84.0",
+    "flow-typed": "^2.5.1",
+    "nodemon": "^1.18.5"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-flow",
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}
