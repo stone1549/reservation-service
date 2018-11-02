@@ -21,7 +21,48 @@ class InMemoryReservationRepo {
     return newRes.id;
   }
   getAllReservations(): Array<Reservation> {
-    return _.cloneDeep(this.repository);
+    return _.cloneDeep(this.repository).sort((a, b) => {
+      if (a.arrivalDate !== b.arrivalDate) {
+        return a.arrivalDate - b.arrivalDate;
+      } else if (a.hotelName !== b.hotelName) {
+        const lowA = a.hotelName.toLowerCase();
+        const lowB = b.hotelName.toLowerCase();
+
+        if (lowA < lowB) {
+          return -1;
+        }
+
+        if (lowA > lowB) {
+          return 1;
+        }
+      } else if (a.name !== b.name) {
+        const lowA = a.name.toLowerCase();
+        const lowB = b.name.toLowerCase();
+
+        if (lowA < lowB) {
+          return -1;
+        }
+
+        if (lowA > lowB) {
+          return 1;
+        }
+      } else if (a.departureDate !== b.departureDate) {
+        return a.departureDate - b.departureDate;
+      } else if (a.id !== b.id) {
+        const lowA = a.id.toLowerCase();
+        const lowB = b.id.toLowerCase();
+
+        if (lowA < lowB) {
+          return -1;
+        }
+
+        if (lowA > lowB) {
+          return 1;
+        }
+      }
+
+      return 0;
+    });
   }
   getReservation(id: string): Reservation|void {
     return this.repository.find((res: Reservation) => {
